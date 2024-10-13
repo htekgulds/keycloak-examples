@@ -68,8 +68,9 @@ app.MapGet("/auth/logout", async (HttpContext context) =>
     return Results.Redirect(logoutUri);
 });
 
-app.MapGet("/users/me", async (HttpClient client) =>
+app.MapGet("/users/me", async (IHttpClientFactory clientFactory) =>
 {
+    var client = clientFactory.CreateClient("default");
     var res = await client.GetAsync("http://localhost:5000/users/me");
 
     if (!res.IsSuccessStatusCode)
