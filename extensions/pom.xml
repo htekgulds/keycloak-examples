@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example.keycloak</groupId>
+    <artifactId>extensions-parent</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <version.keycloak>25.0.6</version.keycloak>
+        <version.json.javax>1.1.2</version.json.javax>
+        <version.yasson>1.0.8</version.yasson>
+        <version.jackson>2.14.2</version.jackson>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <modules>
+      <module>custom-authenticator</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-policy-enforcer</artifactId>
+                <version>${version.keycloak}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-common</artifactId>
+                <version>${version.keycloak}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-core</artifactId>
+                <version>${version.keycloak}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-server-spi-private</artifactId>
+                <version>${version.keycloak}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging</artifactId>
+                <version>3.5.0.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak.bom</groupId>
+                <artifactId>keycloak-spi-bom</artifactId>
+                <version>${version.keycloak}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+      <dependency>
+          <groupId>org.keycloak.bom</groupId>
+          <artifactId>keycloak-misc-bom</artifactId>
+          <version>${version.keycloak}</version>
+          <type>pom</type>
+          <scope>import</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.keycloak.bom</groupId>
+          <artifactId>keycloak-spi-bom</artifactId>
+          <version>${version.keycloak}</version>
+          <type>pom</type>
+          <scope>import</scope>
+      </dependency>
+  </dependencies>
+
+</project>
