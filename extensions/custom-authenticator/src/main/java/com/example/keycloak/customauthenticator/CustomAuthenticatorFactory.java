@@ -1,5 +1,5 @@
 
-package com.example.keycloak;
+package com.example.keycloak.customauthenticator;
 
 import java.util.Arrays;
 import java.util.List;
