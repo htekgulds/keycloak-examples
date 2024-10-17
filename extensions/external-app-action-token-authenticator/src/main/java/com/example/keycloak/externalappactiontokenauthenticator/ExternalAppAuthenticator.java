@@ -19,7 +19,7 @@ import jakarta.ws.rs.core.Response.Status;
 
 public class ExternalAppAuthenticator implements Authenticator {
   private static final Logger logger = Logger.getLogger(ExternalAppAuthenticator.class);
-  public static final String DEFAULT_EXTERNAL_APP_URL = "http://192.168.1.2:4000/auth/action?token={TOKEN}";
+  public static final String DEFAULT_EXTERNAL_APP_URL = "http://localhost:4000/auth/action?token={TOKEN}";
 
   @Override
   public void authenticate(AuthenticationFlowContext context) {
