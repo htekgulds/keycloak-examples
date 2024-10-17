@@ -1,4 +1,4 @@
-package com.example.keycloak.externalappauthenticator;
+package com.example.keycloak.externalappactiontokenauthenticator;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

@@ -1,5 +1,5 @@
 
-package com.example.keycloak.externalappauthenticator;
+package com.example.keycloak.externalappactiontokenauthenticator;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.keycloak.externalappauthenticator;
+package com.example.keycloak.externalappactiontokenauthenticator;
 
 import org.jboss.logging.Logger;
 import org.keycloak.authentication.AuthenticationProcessor;
