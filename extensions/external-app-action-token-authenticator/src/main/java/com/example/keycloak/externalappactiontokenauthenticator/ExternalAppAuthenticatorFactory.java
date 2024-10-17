@@ -21,7 +21,7 @@ public class ExternalAppAuthenticatorFactory implements AuthenticatorFactory {
   };
 
   public static final String CONFIG_EXTERNAL_APP_URL = "external-application-url";
-  public static final String ID = "external-application-authenticator";
+  public static final String ID = "external-application-action-token-authenticator";
 
   @Override
   public Authenticator create(KeycloakSession session) {
