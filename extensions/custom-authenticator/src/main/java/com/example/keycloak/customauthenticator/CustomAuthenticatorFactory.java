@@ -1,7 +1,6 @@
-
 package com.example.keycloak.customauthenticator;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.keycloak.Config.Scope;
@@ -20,7 +19,6 @@ public class CustomAuthenticatorFactory implements AuthenticatorFactory {
     AuthenticationExecutionModel.Requirement.DISABLED
   };
 
-  public static final String CONFIG_ITEM = "config-item";
   public static final String ID = "custom-authenticator";
 
   @Override
@@ -51,7 +49,7 @@ public class CustomAuthenticatorFactory implements AuthenticatorFactory {
 
   @Override
   public boolean isConfigurable() {
-    return true;
+    return false;
   }
 
   @Override
@@ -66,16 +64,12 @@ public class CustomAuthenticatorFactory implements AuthenticatorFactory {
 
   @Override
   public List<ProviderConfigProperty> getConfigProperties() {
-    ProviderConfigProperty rep1 = new ProviderConfigProperty(CONFIG_ITEM, "Config Item",
-          "Example config item",
-          ProviderConfigProperty.STRING_TYPE, CustomAuthenticator.DEFAULT_CONFIG_ITEM_VALUE);
-
-    return Arrays.asList(rep1);
+    return Collections.emptyList();
   }
 
   @Override
   public String getHelpText() {
-    return "Custom Authenticator Help";
+    return "Custom Authenticator Help Text";
   }
 
   @Override

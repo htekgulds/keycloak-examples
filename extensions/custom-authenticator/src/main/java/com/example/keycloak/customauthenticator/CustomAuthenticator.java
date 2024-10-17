@@ -9,7 +9,6 @@ import org.keycloak.models.UserModel;
 
 public class CustomAuthenticator implements Authenticator {
   private static final Logger logger = Logger.getLogger(CustomAuthenticator.class);
-  public static final String DEFAULT_CONFIG_ITEM_VALUE = "world";
 
   @Override
   public void authenticate(AuthenticationFlowContext context) {
@@ -18,9 +17,7 @@ public class CustomAuthenticator implements Authenticator {
   }
 
   @Override
-  public void action(AuthenticationFlowContext arg0) {
-    logger.info("Action...");
-  }
+  public void action(AuthenticationFlowContext context) {}
 
   @Override
   public boolean configuredFor(KeycloakSession session, RealmModel realm, UserModel user) {

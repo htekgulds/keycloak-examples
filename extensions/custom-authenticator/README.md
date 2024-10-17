@@ -1,5 +1,7 @@
 # Custom Authenticator Minimal Setup
 
+Simply log and pass to the next authenticator. Minimun setup needed for a custom authenticator.
+
 ## Content
 
 1. Authenticator
