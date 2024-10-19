@@ -1,6 +1,5 @@
 package com.example.keycloak.externalapprestauthenticator;
 
-import java.net.URI;
 import java.util.Optional;
 
 import org.apache.http.NameValuePair;
