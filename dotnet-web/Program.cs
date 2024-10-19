@@ -1,5 +1,3 @@
-using System.Security.Claims;
-using System.Text.Json.Serialization;
 using System.Web;
 using DotnetWebExample;
 using Microsoft.AspNetCore.Authentication;
@@ -17,26 +15,32 @@ builder.Services.AddRazorPages(options =>
 });
 
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
-.AddOpenIdConnect(options =>
-{
-    options.RequireHttpsMetadata = false;
-    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.SignOutScheme = OpenIdConnectDefaults.AuthenticationScheme;
-    options.Authority = "http://localhost:8080/realms/demo";
-    options.ClientId = "dotnet-web";
-    options.ClientSecret = "HPzn3beLp0E8dsJ7RG3Z9L6BridumcxA";
-    options.ResponseType = OpenIdConnectResponseType.Code;
-    options.SaveTokens = true;
-    options.Scope.Add("openid");
-    options.CallbackPath = "/login-callback"; // Update callback path
-    options.SignedOutCallbackPath = "/logout-callback"; // Update signout callback path
-    options.TokenValidationParameters = new TokenValidationParameters
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddOpenIdConnect(options =>
     {
-        NameClaimType = "preferred_username",
-        RoleClaimType = "roles"
-    };
-});
+        options.RequireHttpsMetadata = false;
+        options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.SignOutScheme = OpenIdConnectDefaults.AuthenticationScheme;
+        options.Authority = "http://localhost:8080/realms/demo";
+        options.ClientId = "dotnet-web";
+        options.ClientSecret = "HPzn3beLp0E8dsJ7RG3Z9L6BridumcxA";
+        options.ResponseType = OpenIdConnectResponseType.Code;
+        options.SaveTokens = true;
+        options.Scope.Add("openid");
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            NameClaimType = "preferred_username",
+            RoleClaimType = "roles"
+        };
+
+        options.Events.OnRedirectToIdentityProvider = async n =>
+        {
+            // TODO: only append 'code' param
+            var query = n.HttpContext.Request.QueryString;
+            n.ProtocolMessage.RedirectUri = n.ProtocolMessage.RedirectUri + query;
+            await Task.CompletedTask;
+        };
+    });
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<AuthorizationHandler>();     
@@ -54,8 +58,7 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseRouting();
 
-app.MapGet("/auth/login", () => TypedResults.Challenge(new AuthenticationProperties { RedirectUri = "/" }))
-    .AllowAnonymous();
+app.MapGet("/auth/login", () => TypedResults.Challenge(new AuthenticationProperties { RedirectUri = "/" }));
 
 app.MapGet("/auth/logout", async (HttpContext context) =>
 {

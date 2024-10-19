@@ -21,7 +21,8 @@
 
     <modules>
       <module>custom-authenticator</module>
-      <module>external-app-authenticator</module>
+      <module>external-app-action-token-authenticator</module>
+      <module>external-app-rest-authenticator</module>
     </modules>
 
     <dependencyManagement>

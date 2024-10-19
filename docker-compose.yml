@@ -11,7 +11,10 @@ services:
     volumes:
       - data:/opt/keycloak/data
       - ./extensions/custom-authenticator/target/custom-authenticator.jar:/opt/keycloak/providers/custom-authenticator.jar
-      - ./extensions/external-app-authenticator/target/external-app-authenticator.jar:/opt/keycloak/providers/external-app-authenticator.jar
+      - ./extensions/external-app-action-token-authenticator/target/external-app-action-token-authenticator.jar:/opt/keycloak/providers/external-app-action-token-authenticator.jar
+      - ./extensions/external-app-rest-authenticator/target/external-app-rest-authenticator.jar:/opt/keycloak/providers/external-app-rest-authenticator.jar
+      - ./extensions/lib/feign-core-13.5.jar:/opt/keycloak/providers/feign-core-13.5.jar
+      - ./extensions/lib/feign-jackson-13.5.jar:/opt/keycloak/providers/feign-jackson-13.5.jar
 
 volumes:
   data:
