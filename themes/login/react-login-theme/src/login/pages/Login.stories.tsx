@@ -16,6 +16,32 @@ export const Default: Story = {
     render: () => <KcPageStory />
 };
 
+export const InTurkish: Story = {
+    render: () => (
+        <KcPageStory
+            kcContext={{
+                auth: {
+                    showResetCredentials: false,
+                    showTryAnotherWayLink: false
+                },
+                realm: {
+                    displayNameHtml: '<strong>Demo</strong>',
+                    name: 'Demo',
+                    displayName: 'Demo',
+                    loginWithEmailAllowed: false,
+                    registrationAllowed: false,
+                    resetPasswordAllowed: false
+                },
+                registrationDisabled: true,
+                locale: {
+                    supported: [],
+                    currentLanguageTag: "tr"
+                }
+            }}
+        />
+    )
+};
+
 export const WithInvalidCredential: Story = {
     render: () => (
         <KcPageStory
